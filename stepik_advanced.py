@@ -52,3 +52,25 @@ print(f'Первая четверть: {qu1}' + '\n' +
       f'Вторая четверть: {qu2}' + '\n' +
       f'Третья четверть: {qu3}' + '\n' +
       f'Четвертая четверть: {qu4}')
+
+#Кремниевая долина 🤖🌶️🌶️
+ls = [input() for i in range(int(input()))]
+s_main = 'anton'
+s_temp = ''
+for s in ls:
+    s_temp = s
+    for i in s_main:
+        if i in s_temp:
+           s_temp = s_temp[s_temp.find(i):]
+        else:
+            break
+    else:
+        print(ls.index(s) + 1, end=' ')
+
+#Роскомнадзор запретил букву stepik
+word = input() + ' запретил букву'
+a = [chr(i) for i in range(1072,1184) if chr(i) != 'ё']
+for x in a:
+    if x in word:
+        print(word, x)
+        word = word.replace(x, '').replace('  ', ' ').strip()
