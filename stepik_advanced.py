@@ -26,3 +26,29 @@ while len(s) > 1:
         s.append(s[q])
     del s[:k]
 print(*s)
+
+#Координатные четверти
+def definition_quarter(x, y):
+    quarter = 0
+    if x == 0 or y == 0: quarter = 0
+    if x < 0 and y > 0: quarter = 2
+    elif x > 0 and y > 0: quarter = 1
+    elif x < 0 and y < 0: quarter = 3
+    elif x > 0 and y < 0: quarter = 4
+    return quarter
+
+n = int(input())
+ls = [input().rsplit() for i in range(n)]
+qu1, qu2, qu3, qu4 = 0, 0, 0, 0
+for i in ls:
+    x, y = int(i[0]), int(i[1])
+    temp = definition_quarter(x, y)
+    if temp == 0: continue
+    elif temp == 1: qu1 += 1
+    elif temp == 2: qu2 += 1
+    elif temp == 3: qu3 += 1
+    elif temp == 4: qu4 += 1
+print(f'Первая четверть: {qu1}' + '\n' +
+      f'Вторая четверть: {qu2}' + '\n' +
+      f'Третья четверть: {qu3}' + '\n' +
+      f'Четвертая четверть: {qu4}')
