@@ -113,3 +113,17 @@ def game_chek(timur, ruslan):
     return print(s_result)
 
 game_chek(word_chek(input()),word_chek(input()))
+
+#Проверка четности
+def digit(num1, num2):
+    if num1 % num2 == 0: return 'делится'
+    else: return 'не делится'
+print(digit(int(input()),int(input())))
+
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+total = 0
+counter = 0
+for i in list1:
+    total += sum(i)
+    counter += len(i)
+print(total / counter)
