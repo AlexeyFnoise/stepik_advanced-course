@@ -27,6 +27,54 @@ while len(s) > 1:
     del s[:k]
 print(*s)
 
+#Координатные четверти
+def definition_quarter(x, y):
+    quarter = 0
+    if x == 0 or y == 0: quarter = 0
+    if x < 0 and y > 0: quarter = 2
+    elif x > 0 and y > 0: quarter = 1
+    elif x < 0 and y < 0: quarter = 3
+    elif x > 0 and y < 0: quarter = 4
+    return quarter
+
+n = int(input())
+ls = [input().rsplit() for i in range(n)]
+qu1, qu2, qu3, qu4 = 0, 0, 0, 0
+for i in ls:
+    x, y = int(i[0]), int(i[1])
+    temp = definition_quarter(x, y)
+    if temp == 0: continue
+    elif temp == 1: qu1 += 1
+    elif temp == 2: qu2 += 1
+    elif temp == 3: qu3 += 1
+    elif temp == 4: qu4 += 1
+print(f'Первая четверть: {qu1}' + '\n' +
+      f'Вторая четверть: {qu2}' + '\n' +
+      f'Третья четверть: {qu3}' + '\n' +
+      f'Четвертая четверть: {qu4}')
+
+#Кремниевая долина 🤖🌶️🌶️
+ls = [input() for i in range(int(input()))]
+s_main = 'anton'
+s_temp = ''
+for s in ls:
+    s_temp = s
+    for i in s_main:
+        if i in s_temp:
+           s_temp = s_temp[s_temp.find(i):]
+        else:
+            break
+    else:
+        print(ls.index(s) + 1, end=' ')
+
+#Роскомнадзор запретил букву stepik
+word = input() + ' запретил букву'
+a = [chr(i) for i in range(1072,1184) if chr(i) != 'ё']
+for x in a:
+    if x in word:
+        print(word, x)
+        word = word.replace(x, '').replace('  ', ' ').strip()
+
 # Камень, ножницы, бумага
 def word_chek(new_word):
     result = 0
