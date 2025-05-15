@@ -26,3 +26,42 @@ while len(s) > 1:
         s.append(s[q])
     del s[:k]
 print(*s)
+
+# Камень, ножницы, бумага
+def word_chek(new_word):
+    result = 0
+    if new_word == 'камень': result = 1
+    elif new_word == 'ножницы': result = 2
+    elif new_word == 'бумага': result = 3
+    elif new_word == 'ящерица': result = 4
+    elif new_word == 'Спок': result = 5
+    return result
+
+def game_chek(timur, ruslan):
+    s_result = ''
+    if timur == 1 and ruslan == 2: s_result = 'Тимур'
+    elif timur == 2 and ruslan == 3: s_result = 'Тимур'
+    elif timur == 3 and ruslan == 1: s_result = 'Тимур'
+    elif timur == 1 and ruslan == 4: s_result = 'Тимур'
+    elif timur == 2 and ruslan == 4: s_result = 'Тимур'
+    elif timur == 3 and ruslan == 5: s_result = 'Тимур'
+    elif timur == 4 and ruslan == 5: s_result = 'Тимур'
+    elif timur == 4 and ruslan == 3: s_result = 'Тимур'
+    elif timur == 5 and ruslan == 1: s_result = 'Тимур'
+    elif timur == 5 and ruslan == 2: s_result = 'Тимур'
+
+    if timur == 1 and ruslan == 3: s_result = 'Руслан'
+    elif timur == 2 and ruslan == 1: s_result = 'Руслан'
+    elif timur == 3 and ruslan == 2: s_result = 'Руслан'
+    elif timur == 1 and ruslan == 5: s_result = 'Руслан'
+    elif timur == 2 and ruslan == 5: s_result = 'Руслан'
+    elif timur == 3 and ruslan == 4: s_result = 'Руслан'
+    elif timur == 4 and ruslan == 1: s_result = 'Руслан'
+    elif timur == 4 and ruslan == 2: s_result = 'Руслан'
+    elif timur == 5 and ruslan == 3: s_result = 'Руслан'
+    elif timur == 5 and ruslan == 4: s_result = 'Руслан'
+
+    if timur == ruslan: s_result = 'Ничья'
+    return print(s_result)
+
+game_chek(word_chek(input()),word_chek(input()))
