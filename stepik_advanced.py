@@ -127,3 +127,13 @@ for i in list1:
     total += sum(i)
     counter += len(i)
 print(total / counter)
+
+#Список по образцу
+n = int(input())
+ls = []
+for i in range(n):
+    ls2 = []
+    for k in range(n):
+        ls2.append(k + 1)
+    ls.append(ls2)
+print(*ls, sep = '\n')
