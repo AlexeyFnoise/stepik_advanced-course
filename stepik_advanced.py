@@ -137,3 +137,22 @@ for i in range(n):
         ls2.append(k + 1)
     ls.append(ls2)
 print(*ls, sep = '\n')
+
+#Упаковка дубликатов 🌶️
+ls_original = input().split()
+ls_new = [[ls_original[0]]]
+for i in range(1, len(ls_original)):
+    if ls_original[i] == ls_original[i - 1]:
+        # list[-1] - (-1) индекс, добавление в последний вложенный спиоск
+        ls_new[-1].append(ls_original[i])
+    else:
+        ls_new.append([ls_original[i]])
+print(ls_new)
+
+#Подсписки списка
+ls_original = input().split()
+ls = [[]]
+for i in range(len(ls_original)):
+    for j in range(len(ls_original) - i):
+        ls.append(ls_original[j:j + i + 1])
+print(ls)
