@@ -156,3 +156,13 @@ for i in range(len(ls_original)):
     for j in range(len(ls_original) - i):
         ls.append(ls_original[j:j + i + 1])
 print(ls)
+
+#Вывести матрицу 1
+n, m = int(input()), int(input())
+# Создаем сразу матрицу по заданным N и M
+ls = [[input() for _ in range(m)] for _ in range(n)]
+#Выводим матрица через циклы
+for i in range(n):
+    for j in range(m):
+        print(ls[i][j], end=' ')
+    print()
