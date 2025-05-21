@@ -166,3 +166,6 @@ for i in range(n):
     for j in range(m):
         print(ls[i][j], end=' ')
     print()
+#Вывод матрицы построчно
+# for st in maxtix:
+    # print(*st)
