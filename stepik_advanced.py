@@ -169,3 +169,54 @@ for i in range(n):
 #Вывод матрицы построчно
 # for st in maxtix:
     # print(*st)
+
+#След матрицы ↘️
+n = int(input())
+ls = [input().split() for _ in range(n)]
+summ = 0
+for i in range(n):
+    summ += int(ls[i][i])
+print(summ)
+
+#Больше среднего
+n = int(input())
+# Формируем матрицу через преобразование каждого элемента введенной строки в список
+# после вкладываем полученный список в основной список(в матрицу)
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+for i in ls:
+    mean = 0
+    for j in i:
+        if j > (sum(i) / n): mean += 1
+    print(mean)
+
+# Максимальный в области 1
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+# Формируем матрицу из половины квадрата по диагонали через срез
+ls_new = [ls[i][:i + 1] for i in range(n)]
+ls_temp = []
+for i in ls_new:
+    ls_temp.append(max(i))
+print(max(ls_temp))
+
+# Максимальный в области 2 🌶️
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+mx = ls[0][0]
+for i in range(n):
+    for j in range(n):
+        if (i >= j and i <= n - 1 - j or i <= j and i >= n - 1 - j) and ls[i][j] > mx:
+            mx = ls[i][j]
+print(mx)
+
+#Суммы четвертей
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+up, left, right, down = 0, 0, 0, 0
+for i in range(n):
+    for j in range(n):
+        if i < j and i > n - 1 - j: right += ls[i][j]
+        if i < j and i < n - 1 - j: up += ls[i][j]
+        if i > j and i < n - 1 - j: left += ls[i][j]
+        if i > j and i > n - 1 - j: down += ls[i][j]
+print(f'Верхняя четверть: {up}', f'Правая четверть: {right}', f'Нижняя четверть: {down}', f'Левая четверть: {left}', sep='\n')
