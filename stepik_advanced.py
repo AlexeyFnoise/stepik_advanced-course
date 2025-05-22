@@ -222,3 +222,34 @@ for i in range(n):
         if i > j and i > n - 1 - j: down += ls[i][j]
 print(f'Верхняя четверть: {up}', f'Правая четверть: {right}',
       f'Нижняя четверть: {down}', f'Левая четверть: {left}', sep='\n')
+
+# Таблица умножения
+n, m = int(input()), int(input())
+ls = [[i * j for i in range(m)] for j in range(n)]
+for i in range(n):
+    for j in range(m):
+        print(str(ls[i][j]).ljust(3), end='')
+    print()
+
+# Максимум в таблице 🔝
+n, m = int(input()), int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+x, y = 0, 0
+el_max = ls[0][0]
+for i in range(n):
+    for j in range(m):
+        if ls[i][j] > el_max:
+            el_max = ls[i][j]
+            x = i
+            y = j
+print(x, y)
+
+# Обмен столбцов ⏸️
+n, m = int(input()), int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+s = input()
+swap_i, swap_j = int(s[0]), int(s[2])
+for i in range(n):
+    ls[i][swap_j], ls[i][swap_i] = ls[i][swap_i], ls[i][swap_j]
+for i in ls:
+    print(*i)
