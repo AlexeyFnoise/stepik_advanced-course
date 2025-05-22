@@ -253,3 +253,18 @@ for i in range(n):
     ls[i][swap_j], ls[i][swap_i] = ls[i][swap_i], ls[i][swap_j]
 for i in ls:
     print(*i)
+
+#Обмен диагоналей 🔃
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+for i in range(n):
+    ls[i][i], ls[n - i - 1][i] = ls[n - i - 1][i], ls[i][i]
+for i in ls: print(*i)
+
+# Зеркальное отображение 🦋
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+for i in range(n // 2):
+    for j in range(n):
+        ls[i][j], ls[n - i - 1][j] = ls[n - i - 1][j], ls[i][j]
+for i in ls: print(*i)
