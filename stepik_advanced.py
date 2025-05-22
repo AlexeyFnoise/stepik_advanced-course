@@ -268,3 +268,35 @@ for i in range(n // 2):
     for j in range(n):
         ls[i][j], ls[n - i - 1][j] = ls[n - i - 1][j], ls[i][j]
 for i in ls: print(*i)
+
+#Ходы коня 🐎
+x, y = input()
+n = 8
+ls = [['.'] * n for _ in range(n)]
+y = n - int(y)
+x = ord(x) - 97
+ls[y][x] = 'N'
+for i in range(n):
+    for j in range(n):
+        if abs(i - y) * abs(j - x) == 2:
+            ls[i][j] = '*'
+for i in ls: print(*i)
+
+# Магический квадрат ✨🌶️
+n = int(input())
+ls = [[int(x) for x in input().split()] for _ in range(n)]
+digits = [i for i in range(1, n ** 2 + 1)]
+d1, d2, = 0, 0
+for i in range(n):
+    j_summ, i_summ = 0, 0
+    for j in range(n):
+        j_summ += ls[j][i]
+        i_summ += ls[i][j]
+        if ls[i][j] in digits:
+            digits.remove(ls[i][j])
+    d1 += ls[i][i]
+    d2 += ls[i][n - i - 1]
+    if j_summ != i_summ:
+        break
+if j_summ == i_summ == d1 == d2 and digits == []: print('YES')
+else: print('NO')
