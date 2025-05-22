@@ -205,7 +205,8 @@ ls = [[int(x) for x in input().split()] for _ in range(n)]
 mx = ls[0][0]
 for i in range(n):
     for j in range(n):
-        if (i >= j and i <= n - 1 - j or i <= j and i >= n - 1 - j) and ls[i][j] > mx:
+        if (i >= j and i <= n - 1 - j or
+            i <= j and i >= n - 1 - j) and ls[i][j] > mx:
             mx = ls[i][j]
 print(mx)
 
@@ -219,4 +220,5 @@ for i in range(n):
         if i < j and i < n - 1 - j: up += ls[i][j]
         if i > j and i < n - 1 - j: left += ls[i][j]
         if i > j and i > n - 1 - j: down += ls[i][j]
-print(f'Верхняя четверть: {up}', f'Правая четверть: {right}', f'Нижняя четверть: {down}', f'Левая четверть: {left}', sep='\n')
+print(f'Верхняя четверть: {up}', f'Правая четверть: {right}',
+      f'Нижняя четверть: {down}', f'Левая четверть: {left}', sep='\n')
