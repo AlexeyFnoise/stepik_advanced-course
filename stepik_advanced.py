@@ -300,3 +300,81 @@ for i in range(n):
         break
 if j_summ == i_summ == d1 == d2 and digits == []: print('YES')
 else: print('NO')
+
+#Шахматная доска
+n, m = input().split()
+ls = [[0] * int(m) for _ in range(int(n))]
+for i in range(int(n)):
+    for j in range(int(m)):
+        if (i + j) % 2 == 0: ls[i][j] = '.'
+        else: ls[i][j] = '*'
+for i in ls:
+    print(*i)
+
+#Побочная диагональ
+n = int(input())
+ls = [[0] * n for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        if j == n - i - 1: ls[i][j] = 1
+        elif (i > j or i < j or i == j) and i > n - 1 - j: ls[i][j] = 2
+for i in ls:
+    print(*i)
+
+#Заполнение 1
+n, m = [int(i) for i in input().split()]
+ls = [[0] * m for _ in range(n)]
+count = 0
+for i in range(n):
+    for j in range(m):
+        count += 1
+        ls[i][j] = count
+for i in range(n):
+    for j in range(m):
+        print(str(ls[i][j]).ljust(3), end=' ')
+    print()
+
+#Заполнение 2
+n, m = [int(i) for i in input().split()]
+ls = [[0] * m for _ in range(n)]
+count = 0
+for i in range(m):
+    for j in range(n):
+        count += 1
+        ls[j][i] = count
+for i in range(n):
+    for j in range(m):
+        print(str(ls[i][j]).ljust(3), end=' ')
+    print()
+
+#Заполнение спиралью 🌀🌶️🌶️
+n, m = [int(i) for i in input().split()]
+ls = [[0] * m for _ in range(n)]
+x, y = 0, 0
+dx, dy = 0, 1
+ls[0][0] = 1
+count = 2
+while count <= n * m:
+    if 0 <= x + dx <= n - 1 and 0 <= y + dy <= m - 1 and ls[x + dx][y + dy] == 0:
+        ls[x + dx][y + dy] = count
+        count += 1
+        x += dx
+        y += dy
+    else:
+        if dy == 1:
+            dy = 0
+            dx = 1
+        elif dx == 1:
+            dx = 0
+            dy = -1
+        elif dy == -1:
+            dy = 0
+            dx = -1
+        elif dx == -1:
+            dx = 0
+            dy = 1
+
+for i in range(n):
+    for j in range(m):
+        print(str(ls[i][j]).ljust(3), end=' ')
+    print()
