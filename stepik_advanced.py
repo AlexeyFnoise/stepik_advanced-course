@@ -378,3 +378,44 @@ for i in range(n):
     for j in range(m):
         print(str(ls[i][j]).ljust(3), end=' ')
     print()
+
+# Сложение матриц
+n, m = [int(i) for i in input().split()]
+ls1 = [[int(x) for x in input().split()] for _ in range(n)]
+input()
+ls2 = [[int(x) for x in input().split()] for _ in range(n)]
+ls_new = [[ls1[i][j] + ls2[i][j] for j in range(m)] for i in range(n)]
+for i in ls_new:
+    print(*i)
+
+# Умножение матриц 🌶️
+s_temp = 0
+n, m = [int(i) for i in input().split()]
+ls1 = [[int(x) for x in input().split()] for _ in range(n)]
+input()
+n1, m1 = [int(i) for i in input().split()]
+ls2 = [[int(x) for x in input().split()] for _ in range(n1)]
+ls_new = [[0] * m1 for _ in range(n)]
+for i in range(n):
+    for q in range(m1):
+        for k in range(m):
+            s_temp += ls1[i][k] * ls2[k][q]
+        ls_new[i][q] = s_temp
+        s_temp = 0
+for i in ls_new:
+    print(*i)
+
+# Возведение матрицы в степень 🌶️
+n = int(input())
+ls1 = [[int(x) for x in input().split()] for _ in range(n)]
+x = int(input())
+ls2 = ls1
+for _ in range(x - 1):
+    ls3 = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for q in range(n):
+            for k in range(n):
+                ls3[i][q] += ls1[i][k] * ls2[k][q]
+    ls1 = ls3
+for i in ls1:
+    print(*i)
