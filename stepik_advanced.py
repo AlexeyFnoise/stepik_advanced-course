@@ -423,3 +423,11 @@ for i in ls1:
 tuples = [(10, 20, 40), (40, 50, 60), (70, 80, 90), (10, 90), (1, 2, 3, 4), (5, 6, 10, 2, 1, 77)]
 new_tuples = [(i[:-1]) + (100,) for i in tuples]
 print(new_tuples)
+
+#Вершина параболы
+tup = tuple([int(input()) for _ in range(3)])
+ls_temp = [0.0, 0.0]
+ls_temp[0] = -(tup[1] / (2 * tup[0]))
+ls_temp[1] = (4 * tup[0] * tup[2] - tup[1] ** 2) / (4 * tup[0])
+tup = tuple(ls_temp)
+print(tup)
