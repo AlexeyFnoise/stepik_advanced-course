@@ -431,3 +431,19 @@ ls_temp[0] = -(tup[1] / (2 * tup[0]))
 ls_temp[1] = (4 * tup[0] * tup[2] - tup[1] ** 2) / (4 * tup[0])
 tup = tuple(ls_temp)
 print(tup)
+
+# Конкурсный отбор
+n = int(input())
+# Ввод вложенных кортежей
+tp = tuple(tuple(input().split()) for _ in range(n))
+for i in tp: print(*i)
+print()
+for i in tp:
+    if int(i[1]) >= 4: print(*i)
+
+# Последовательность Трибоначчи
+n = int(input())
+m1, m2, m3 = 1, 1, 1
+for i in range(n):
+    print(m1, end = ' ')
+    m1, m2, m3 = m2, m3, m1 + m2 + m3
