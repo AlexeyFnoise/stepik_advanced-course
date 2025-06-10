@@ -472,3 +472,17 @@ if correct:
     print(f'Верно решили {len(student)} учащихся')
     print(f'Из всех попыток {round((correct / n) * 100 + 0.001)}% верных')
 else: print('Вы можете стать первым, кто решит эту задачу')
+
+# Общие числа
+set1, set2 = set(input().split()), set(input().split())
+set3 = set1 & set2
+# Обрати внимание на ключ сортировки key=int
+ls = sorted(set3, key=int)
+print(*ls)
+
+# Общие цифры
+ls = [set(input()) for i in range(int(input()))]
+set1 = ls[0]
+for i in range(1, len(ls)):
+    set1.intersection_update(ls[i])
+print(*sorted(set1))
