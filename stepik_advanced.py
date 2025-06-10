@@ -447,3 +447,14 @@ m1, m2, m3 = 1, 1, 1
 for i in range(n):
     print(m1, end = ' ')
     m1, m2, m3 = m2, m3, m1 + m2 + m3
+
+# 8.4 Основы работы с множествами
+# Три слова
+s1, s2, s3 = [set(i) for i in input().split()]
+if s1 == s2 == s3: print('YES')
+else: print('NO')
+
+# 8.5 Методы множеств. Часть 1
+# Уникальные символы 1
+ls = [set(input().lower()) for i in range(int(input()))]
+for i in ls: print(len(i))
