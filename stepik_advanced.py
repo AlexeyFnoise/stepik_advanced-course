@@ -458,3 +458,17 @@ else: print('NO')
 # Уникальные символы 1
 ls = [set(input().lower()) for i in range(int(input()))]
 for i in ls: print(len(i))
+
+# Счетчик верных решений ✅🌶️🌶️
+student = set()
+n = int(input())
+correct = 0
+for _ in range(n):
+    resualt = input().split(': ')
+    if resualt[1] == 'Correct':
+        correct += 1
+        student.add(resualt[0])
+if correct:
+    print(f'Верно решили {len(student)} учащихся')
+    print(f'Из всех попыток {round((correct / n) * 100 + 0.001)}% верных')
+else: print('Вы можете стать первым, кто решит эту задачу')
