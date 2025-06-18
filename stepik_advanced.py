@@ -486,3 +486,25 @@ set1 = ls[0]
 for i in range(1, len(ls)):
     set1.intersection_update(ls[i])
 print(*sorted(set1))
+
+#Все цифры 🔢
+set1 = set(input())
+set2 = set(input())
+flag = set1.issuperset(set2)
+
+# Вывод в скобках (
+# (кортеж, где 0 индекс NO и 1 индекс YES)
+# [обращение по индексу из значения flag(или 0(true) или 1(false)])
+print(('NO', 'YES')[flag])
+
+#Урок математики 🧠
+set1, set2, set3 = [set(input().split()) for _ in range(3)]
+print(*sorted((set1 | set2 | set3) - (set1 & set2 & set3), key=int))
+
+#Урок биологии
+set1 = set(int(i) for i in input().split())
+set2 = set(int(i) for i in input().split())
+set3 = set(int(i) for i in input().split())
+set_new = set(range(11))
+print(*sorted(set_new - set1 - set2 - set3))
+
