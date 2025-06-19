@@ -508,3 +508,8 @@ set3 = set(int(i) for i in input().split())
 set_new = set(range(11))
 print(*sorted(set_new - set1 - set2 - set3))
 
+#8.8 Генераторы множеств и frozenset
+# {выражение for переменная in последовательность}
+words = ['Plum', 'Grapefruit', 'apple', 'orange', 'pomegranate', 'Cranberry', 'lime', 'Lemon', 'grapes', 'persimmon', 'tangerine', 'Watermelon', 'currant', 'Almond']
+newset = {i[0].lower() for i in words}
+print(*sorted(newset))
