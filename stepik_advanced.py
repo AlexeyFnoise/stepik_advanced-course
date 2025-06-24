@@ -513,7 +513,6 @@ print(*sorted(set_new - set1 - set2 - set3))
 words = ['Plum', 'Grapefruit', 'apple', 'orange', 'pomegranate', 'Cranberry', 'lime', 'Lemon', 'grapes', 'persimmon', 'tangerine', 'Watermelon', 'currant', 'Almond']
 newset = {i[0].lower() for i in words}
 print(*sorted(newset))
-l
 
 # Книги на прочтение 📚
 m, n = int(input()), int(input())
