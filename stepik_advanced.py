@@ -513,3 +513,16 @@ print(*sorted(set_new - set1 - set2 - set3))
 words = ['Plum', 'Grapefruit', 'apple', 'orange', 'pomegranate', 'Cranberry', 'lime', 'Lemon', 'grapes', 'persimmon', 'tangerine', 'Watermelon', 'currant', 'Almond']
 newset = {i[0].lower() for i in words}
 print(*sorted(newset))
+
+# Книги на прочтение 📚
+m, n = int(input()), int(input())
+flag = 0
+home = {input() for _ in range(m)}
+ls = [('NO', 'YES')[input() in home] for _ in range(n)]
+print(*ls, sep='\n')
+
+n = int(input())
+res = {input() for _ in range(int(input()))}
+for _ in range(n - 1):
+    res &= {input() for _ in range(int(input()))}
+print(*sorted(res), sep= '\n')
