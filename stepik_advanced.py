@@ -562,3 +562,46 @@ my_dict = {
 ls = [int(i) for i in input()]
 ls_new = [my_dict[i] for i in ls]
 print(*ls_new)
+
+#Информация об учебных курсах 🎓
+course = {'CS101': {'room': 3004, 'prepod': 'Хайнс', 'time': '8:00' },
+          'CS102': {'room': 4501, 'prepod': 'Альварадо', 'time': '9:00' },
+          'CS103': {'room': 6755, 'prepod': 'Рич', 'time': '10:00' },
+          'NT110': {'room': 1244, 'prepod': 'Берк', 'time': '11:00' },
+          'CM241': {'room': 1411, 'prepod': 'Ли', 'time': '13:00' }}
+number = input()
+print(f'{number}: {course[number]['room']}, {course[number]['prepod']}, '
+      f'{course[number]['time']}')
+
+# Набор сообщений 📩
+symbol_numbers = {'1': '.,?!:',
+                  '2': 'ABC',
+                  '3': 'DEF',
+                  '4': 'GHI',
+                  '5': 'JKL',
+                  '6': 'MNO',
+                  '7': 'PQRS',
+                  '8': 'TUV',
+                  '9': 'WXYZ',
+                  '0': ' '}
+s = input().upper()
+s_new = ''
+for el in s:
+    for key, value in symbol_numbers.items():
+        if el in value: print(key * (value.index(el) + 1), end= '')
+
+# Код Морзе
+letters = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
+morse = ['.-', '-...', '-.-.', '-..', '.', '..-.',
+         '--.', '....', '..', '.---', '-.-', '.-..',
+         '--', '-.', '---', '.--.', '--.-', '.-.', '...',
+         '-', '..-', '...-', '.--', '-..-', '-.--', '--..',
+         '-----', '.----', '..---', '...--', '....-', '.....',
+         '-....', '--...', '---..', '----.']
+s = input().upper()
+mydict = dict(zip(letters, morse))
+for key in s:
+    if key in mydict: print(mydict[key], end= ' ')
+
+
+
