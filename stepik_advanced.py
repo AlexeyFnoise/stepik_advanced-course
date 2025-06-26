@@ -603,5 +603,79 @@ mydict = dict(zip(letters, morse))
 for key in s:
     if key in mydict: print(mydict[key], end= ' ')
 
+#Квадраты ключей
+result = {}
+for i in range(1, 16): result.setdefault(i, i ** 2)
+print(result)
 
+#Результирующий словарь
+dict1 = {'a': 100, 'z': 333, 'b': 200, 'c': 300, 'd': 45, 'e': 98, 't': 76, 'q': 34, 'f': 90, 'm': 230}
+dict2 = {'a': 300, 'b': 200, 'd': 400, 't': 777, 'c': 12, 'p': 123, 'w': 111, 'z': 666}
+result = dict1.copy()
+for key, value in dict2.items():
+    result[key] = result.get(key, 0) + value
 
+#Подсчет вхождений
+text = 'footballcyberpunkextraterritorialityconversationalistblockophthalmoscopicinterdependencemamauserfff'
+result = {}
+for i in text:
+    result[i] = result.setdefault(i, 0) + 1
+print(result)
+
+#Наиболее встречающеся слово
+s = 'orange strawberry barley gooseberry apple apricot barley currant orange melon pomegranate banana banana orange barley apricot plum grapefruit banana quince strawberry barley grapefruit banana grapes melon strawberry apricot currant currant gooseberry raspberry apricot currant orange lime quince grapefruit barley banana melon pomegranate barley banana orange barley apricot plum banana quince lime grapefruit strawberry gooseberry apple barley apricot currant orange melon pomegranate banana banana orange apricot barley plum banana grapefruit banana quince currant orange melon pomegranate barley plum banana quince barley lime grapefruit pomegranate barley'
+ls = s.split()
+mydict = {}
+v_max = 0
+key_max = 0
+for el in ls:
+    mydict[el] = mydict.setdefault(el, 0) + 1
+    if mydict[el] > v_max:
+        v_max = mydict[el]
+        key_max = el
+print(key_max)
+
+#Список pets
+pets = [('Hatiko', 'Parker', 'Wilson', 50),
+        ('Rusty', 'Josh', 'King', 25),
+        ('Fido', 'John', 'Smith', 28),
+        ('Butch', 'Jake', 'Smirnoff', 18),
+        ('Odi', 'Emma', 'Wright', 18),
+        ('Balto', 'Josh', 'King', 25),
+        ('Barry', 'Josh', 'King', 25),
+        ('Snape', 'Hannah', 'Taylor', 40),
+        ('Horry', 'Martha', 'Robinson', 73),
+        ('Giro', 'Alex', 'Martinez', 65),
+        ('Zooma', 'Simon', 'Nevel', 32),
+        ('Lassie', 'Josh', 'King', 25),
+        ('Chase', 'Martha', 'Robinson', 73),
+        ('Ace', 'Martha', 'Williams', 38),
+        ('Rocky', 'Simon', 'Nevel', 32)]
+
+result = {}
+for el in pets:
+    result.setdefault(el[1:], []).append(el[0])
+print(result)
+
+# Самое редкое слово 🌶️
+ls = [i.lower().strip(".,!?:;-") for i in input().split()]
+mydict = {}
+for i in ls:
+    mydict[i] = ls.count(i)
+result = {}
+min_count = min(mydict.values())
+for key, value in mydict.items():
+    if value == min_count:
+        result[key] = value
+print(min(result))
+
+# Исправление дубликатов 🌶️
+ls = input().lower().split()
+mydict = {}
+ls_new = []
+for el in ls:
+    if el not in ls_new: ls_new.append(el)
+    else:
+        mydict[el] = mydict.get(el, 0) + 1
+        ls_new.append(el + '_' + str(mydict[el]))
+print(*ls_new)
