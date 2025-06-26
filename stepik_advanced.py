@@ -679,3 +679,43 @@ for el in ls:
         mydict[el] = mydict.get(el, 0) + 1
         ls_new.append(el + '_' + str(mydict[el]))
 print(*ls_new)
+
+# Словарь синонимов
+dict_sinonim = {}
+for _ in range(int(input())):
+    k, v = input().split()
+    dict_sinonim[k] = v
+sinonim = input()
+for k, v in dict_sinonim.items():
+    if sinonim == k: print(v)
+    if sinonim == v: print(k)
+
+# Страны и города
+country = {}
+for _ in range(int(input())):
+    c, *cities = input().split()
+    country[c] = cities
+for _ in range(int(input())):
+    k = input()
+    for key, value in country.items():
+        if k in value: print(key)
+
+# Телефонная книга 📒
+dict_book = {}
+for _ in range(int(input())):
+    number, name = input().lower().split()
+    dict_book.setdefault(name, []).append(number)
+for _ in  range(int(input())):
+    s = input().lower()
+    #Можно вывести так
+    print(*dict_book[s]) if s in dict_book else print('абонент не найден')
+    # А можно вот так, без ввода строки S выше
+    # print(*dict_book.get(input.lower(), ['абонент не найден']))
+
+# Секретное слово
+s = input()
+my_dict = {}
+for _ in range(int(input())):
+    value, key = input().split(': ')
+    my_dict[int(key)] = value
+for i in s: print(my_dict[s.count(i)], end='')
