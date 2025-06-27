@@ -680,6 +680,36 @@ for el in ls:
         ls_new.append(el + '_' + str(mydict[el]))
 print(*ls_new)
 
+# Словарь программиста 📘
+it_dict = {}
+for _ in range(int(input())):
+    k, v = input().split(': ')
+    it_dict[k.lower()] = v
+for _ in range(int(input())):
+    s = input().lower()
+    print(it_dict.get(s, 'Не найдено'))
+
+#Анаграммы 1
+s1 = sorted(input())
+s2 = sorted(input())
+dict1, dict2 = dict(zip(range(len(s1)), s1)), dict(zip(range(len(s2)), s2))
+print('YES') if dict2 == dict1 else print('NO')
+
+# Анаграммы 2
+s1 = sorted([i for i in input().lower() if i.isalpha()])
+s2 = sorted([i for i in input().lower() if i.isalpha()])
+dict1, dict2 = dict(zip(range(len(s1)), s1)), dict(zip(range(len(s2)), s2))
+print('YES') if dict2 == dict1 else print('NO')
+# Тоже самое через фукнцию
+def s(word):
+    res = {}
+    for i in word.lower():
+        if i.isalpha():
+            res[i] = res.get(i, 0) + 1
+    return res
+print(("NO", "YES")[s(input()) == s(input())])
+
+
 # Словарь синонимов
 dict_sinonim = {}
 for _ in range(int(input())):
