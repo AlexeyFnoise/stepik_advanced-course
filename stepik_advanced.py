@@ -754,3 +754,8 @@ for i in s: print(my_dict[s.count(i)], end='')
 numbers = [34, 10, -4, 6, 10, 23, -90, 100, 21, -35, -95, 1, 36, -38, -19, 1, 6, 87]
 result = {i: numbers[i] ** 2 for i in range(len(numbers))}
 print(result)
+
+#Генератор словарей 5
+s = '1:men 2:kind 90:number 0:sun 34:book 56:mountain 87:wood 54:car 3:island 88:power 7:box 17:star 101:ice'
+result = {int(el.split(':')[0]): el.split(':')[1] for el in s.split()}
+print(result)
