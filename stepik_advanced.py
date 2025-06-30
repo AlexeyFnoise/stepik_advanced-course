@@ -809,3 +809,79 @@ student_names = ['Camila Rodriguez', 'Juan Cruz', 'Dan Richards', 'Sam Boyle', '
 student_grades = [86, 98, 89, 92, 45, 67, 89, 90, 100, 98, 10, 96, 93]
 result = [{i: {k: q}}for i, k, q in zip(student_ids, student_names, student_grades)]
 print(result)
+
+#Итоговая работа на словари 1
+my_dict = {'C1': [10, 20, 30, 7, 6, 23, 90], 'C2': [20, 30, 40, 1, 2, 3, 90, 12], 'C3': [12, 34, 20, 21], 'C4': [22, 54, 209, 21, 7], 'C5': [2, 4, 29, 21, 19], 'C6': [4, 6, 7, 10, 55], 'C7': [4, 8, 12, 23, 42], 'C8': [3, 14, 15, 26, 48], 'C9': [2, 7, 18, 28, 18, 28]}
+my_dict = {i: [i for i in my_dict[k] if i <= 20]for k in my_dict}
+
+#Итоговая работа на словари 2
+emails = {'nosu.edu': ['timyr', 'joseph', 'svetlana.gaeva', 'larisa.mamuk'],
+          'gmail.com': ['ruslan.chaika', 'rustam.mini', 'stepik-best'],
+          'msu.edu': ['apple.fruit', 'beegeek', 'beegeek.school'],
+          'yandex.ru': ['surface', 'google'],
+          'hse.edu': ['tomas-henders', 'cream.soda', 'zivert'],
+          'mail.ru': ['angel.down', 'joanne', 'the.fame.moster']}
+result = sorted([i + '@' + key for key, value in emails.items() for i in value])
+print(*result, sep= '\n')
+
+#Итоговая работа на словари Минутка генетики 🧬
+dnk_to_rnk = {"G":"C", "C":"G","T":"A","A":"U"}
+result = [dnk_to_rnk[i] for i in input()]
+print(*result, sep= '')
+
+#Итоговая работа на словари Порядковый номер
+s = input().split()
+reult = {}
+for el in s:
+    reult[el] = reult.get(el, 0) + 1
+    print(reult[el], end=' ')
+
+#Итоговая работа на словари Scrabble game
+const = {
+    1: "AEILNORSTU",
+    2: "DG",
+    3: "BCMP",
+    4: "FHVWY",
+    5: "K",
+    8: "JX",
+    10: "QZ"
+}
+s = input().upper()
+count = 0
+for key, value in const.items():
+    for i in s:
+        if i in value: count+= key
+print(count)
+
+#Итоговая работа на словари Строка запроса 🔎
+def build_query_string(params):
+    return '&'.join([f"{key}={value}" for key, value in sorted(params.items())])
+
+# Итоговая работа на словари Слияние словарей 🌶️
+def merge(values):      # values - это список словарей
+    result = {}
+    for d in values:
+        for key in d:
+            result.setdefault(key, set()).add((d[key]))
+    return result
+
+# Итоговая работа на словари Опасный вирус 😈
+result = {}
+dict_oper = {'W': 'write', 'R': 'read', 'X': 'execute'}
+for _ in range(int(input())):
+    x = input().split()
+    result[x[0]] = [dict_oper[i] for i in x[1:]]
+for _ in range(int(input())):
+    x = input().split()
+    if x[0] in result[x[1]]: print('OK')
+    else: print('Access denied')
+
+# Итоговая работа на словари Покупки в интернет-магазине 🛒🌶️
+result = {}
+for _ in range(int(input())):
+    key1, key2, value = input().split()
+    result.setdefault(key1, {})
+    result[key1][key2] = result[key1].get(key2, 0) + int(value)
+for key, value in sorted(result.items()):
+    print(f'{key}:')
+    for i in sorted(value): print(i, value[i])
