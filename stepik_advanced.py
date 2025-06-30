@@ -1,4 +1,6 @@
 #
+import random
+
 a, b = int(input()), int(input())
 print(a + b, a - b, a * b, a / b, a // b, a % b, (a ** 10 + b ** 10) ** 0.5, sep='\n')
 
@@ -885,3 +887,22 @@ for _ in range(int(input())):
 for key, value in sorted(result.items()):
     print(f'{key}:')
     for i in sorted(value): print(i, value[i])
+
+# 12.1 Модуль random. Часть 1
+# import random
+n = int(input())    # количество попыток
+for _ in range(n):
+    print(random.choice(['Орел', 'Решка']))
+
+# генерация пароля
+# import random
+length = int(input())    # длина пароля
+s = ''
+for _ in range(length):
+    if random.randint(0, 1) == 1: s += chr(random.randint(65, 90))
+    else: s += chr(random.randint(97, 122))
+print(s)
+
+# Лотерейный билет
+# import random
+print(*sorted([random.randint(1, 49) for _ in range(7)]))
