@@ -907,6 +907,29 @@ print(s)
 # import random
 print(*sorted([random.randint(1, 49) for _ in range(7)]))
 
+# Приведенный ниже код:
+#
+# import string
+#
+# print(string.ascii_letters)
+# print(string.ascii_uppercase)
+# print(string.ascii_lowercase)
+# print(string.digits)
+# print(string.hexdigits)
+# print(string.octdigits)
+# print(string.punctuation)
+# print(string.printable)
+# выводит:
+#
+# abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+# ABCDEFGHIJKLMNOPQRSTUVWXYZ
+# abcdefghijklmnopqrstuvwxyz
+# 0123456789
+# 0123456789abcdefABCDEF
+# 01234567
+# !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+# 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ \t\n\r\x0b\x0c
+
 my_dict = {
     0: 'zero',
     1: 'one',
