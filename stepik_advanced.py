@@ -950,3 +950,19 @@ print(*ls_new)
 def generate_ip():
     return f'{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}'
 generate_ip()
+
+# Почтовый индекс в Латверии
+# import random, string
+# from random import randint, choice
+def generate_index():
+    s = string.ascii_uppercase
+    return f'{choice(s)}{choice(s)}{randint(0, 99)}_{randint(0, 99)}{choice(s)}{choice(s)}'
+generate_index()
+
+#Лотерейный билет
+# import random
+my_set = set()
+while len(my_set) != 100:
+    my_set.add(random.randint(1000000, 9999999))
+    print(*my_set, sep = '\n')
+
