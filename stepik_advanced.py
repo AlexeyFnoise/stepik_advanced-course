@@ -966,3 +966,49 @@ while len(my_set) != 100:
     my_set.add(random.randint(1000000, 9999999))
     print(*my_set, sep = '\n')
 
+# Игра в бинго
+# import random
+numbers = random.sample(list(range(1, 76)), 25)
+matrix = [numbers[i:i + 5] for i in range(0, 21, 5)]
+matrix[2][2] = 0
+for i in range(5):
+    for j in range(5):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+
+#Тайный друг 🕵🏻🌶️
+# import random
+my_friend =[input() for _ in range(int(input()))]
+random.shuffle(my_friend)
+for i in range(len(my_friend)):
+    print(f'{my_friend[i - 1]} - {my_friend[i]}')
+
+# Генератор паролей 1
+# import random
+# import string
+def generate_password(length):
+    smbl = string.ascii_uppercase + string.ascii_lowercase + string.digits[2:]
+    smbl = ''.join([symbol for symbol in smbl if symbol not in 'IloO'])
+    return ''.join(random.sample(smbl, length))
+def generate_passwords(count, length):
+    return [generate_password(length) for _ in range(count)]
+
+n, m = int(input()), int(input())
+print(*generate_passwords(n, m), sep='\n')
+
+# Генератор паролей 2
+# import random
+# import string
+def generate_password(length):
+    upper_case = [i for i in string.ascii_uppercase if i not in 'IO']
+    lower_case = [i for i in string.ascii_lowercase if i not in 'lo']
+    digits = list(string.digits[2:])
+    chars = upper_case + lower_case + digits
+    result = [random.choice(i) for i in (upper_case, lower_case, digits)]
+    result += [random.choice(chars) for i in range(length - 3)]
+    return ''.join(result)
+def generate_passwords(count, length):
+    return [generate_password(length) for _ in range(count)]
+
+n, m = int(input()), int(input())
+print(*generate_passwords(n, m), sep='\n')
