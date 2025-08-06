@@ -1024,3 +1024,15 @@ for _ in range(n):
     y = random.uniform(-2, 2)
     if x**3 + y**4 + 2 >= 0 and 3 * x + y ** 2 <= 2: k += 1
 print((k / n) * s0)
+
+# 12.3 Метод Монте-Карло и Bogosort
+# import random
+n = 10 ** 5
+k = 0
+s0 = 4
+
+for _ in range(n):
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    if x ** 2 + y ** 2 <= 1: k += 1
+print((k / n) * s0)
