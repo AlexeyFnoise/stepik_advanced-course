@@ -1036,3 +1036,14 @@ for _ in range(n):
     y = random.uniform(-1, 1)
     if x ** 2 + y ** 2 <= 1: k += 1
 print((k / n) * s0)
+
+# 13.1 Модуль decimal
+# from decimal import *
+num = Decimal(input())
+tup = num.as_tuple().digits
+print(max(tup) + min(tup) * (abs(num) >= 1))
+
+#Математическое выражение
+# from decimal import *
+d = Decimal(input())
+print(d.exp() + d.ln() + d.log10() + d.sqrt())
