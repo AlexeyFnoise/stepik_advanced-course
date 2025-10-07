@@ -1106,3 +1106,18 @@ for i in range(1, n):
     for j in range(i + 1, n + 1):
         m_set.add(Fraction(i, j))
 print(*sorted(m_set), sep = '\n')
+
+z1, z2 = complex(input()), complex(input())
+print(f'{z1} + {z2} = {z1 + z2}\n'
+      f'{z1} - {z2} = {z1 - z2}\n'
+      f'{z1} * {z2} = {z1 * z2}\n')
+
+numbers = [3 + 4j, 3 + 1j, -7 + 3j, 4 + 8j, -8 + 10j, -3 + 2j, 3 - 2j, -9 + 9j, -1 - 1j, -1 - 10j, -20 + 15j, -21 + 1j, 1j, -3 + 8j, 4 - 6j, 8 + 2j, 2 + 3j]
+x = 0
+for num in numbers:
+    if abs(num) > abs(x): x = num
+print(x, abs(x), sep='\n')
+
+n = int(input())
+z1, z2 = complex(input()), complex(input())
+print(z1 ** n + z2 ** n + z1.conjugate() ** n + z2.conjugate() ** (n + 1))
