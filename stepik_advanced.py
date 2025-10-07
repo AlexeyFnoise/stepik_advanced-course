@@ -1107,6 +1107,7 @@ for i in range(1, n):
         m_set.add(Fraction(i, j))
 print(*sorted(m_set), sep = '\n')
 
+#Комплексные числа
 z1, z2 = complex(input()), complex(input())
 print(f'{z1} + {z2} = {z1 + z2}\n'
       f'{z1} - {z2} = {z1 - z2}\n'
@@ -1121,3 +1122,161 @@ print(x, abs(x), sep='\n')
 n = int(input())
 z1, z2 = complex(input()), complex(input())
 print(z1 ** n + z2 ** n + z1.conjugate() ** n + z2.conjugate() ** (n + 1))
+
+# 14.1 Модуль черепашки. Часть 1
+import turtle
+def triangle(side):
+    turtle.forward(side)
+    turtle.left(120)
+    turtle.forward(side)
+    turtle.left(120)
+    turtle.forward(side)
+    turtle.left(120)
+    turtle.exitonclick()
+triangle(int(input()))
+
+# 14.2 Модуль черепашки. Часть 2
+def shalom(num):
+    for _ in '123':
+        turtle.forward(num)
+        turtle.left(120)
+    turtle.forward(num / 3)
+    turtle.left(120)
+    turtle.forward(num / 3 * 2)
+    turtle.right(120)
+    for _ in '123':
+        turtle.forward(num)
+        turtle.right(120)
+shalom(100)
+
+# Напишите программу, которая рисует изображение мишки в соответствии с образцом.
+size = int(input())  # Размер головы (радиус большого круга)
+pensize = size * 0.1  # Размер пера
+turtle.Screen().setup(600, 1000)
+turtle.hideturtle()
+turtle.pensize(pensize)
+turtle.speed(0)
+
+parts = {1: {"pos": (0, 0), "size": size,  # Голова
+             "circle": True, "color": "brown"},
+         2: {"pos": (0, 0), "size": size * 0.6,  # Нос
+             "circle": True, "color": "orange"},
+         3: {"pos": (0, size * 0.3), "size": size * 0.3,  # Ноздри
+             "circle": False, "color": "gray"},
+         4: {"pos": (0, size * 0.6), "size": size * 0.1,  # Кончик
+             "circle": True, "color": "yellow"},  # носа
+         5: {"pos": (size * -0.5, size * 1.2), "size": size * 0.1,  # Левый
+             "circle": True, "color": "black"},  # глаз
+         6: {"pos": (size * 0.5, size * 1.2), "size": size * 0.1,  # Правый
+             "circle": True, "color": "black"},  # глаз
+         7: {"pos": (size * -0.85, size * 1.8), "size": size * 0.3,  # Левое
+             "circle": True, "color": "red"},  # ухо
+         8: {"pos": (size * 0.85, size * 1.8), "size": size * 0.3,  # Правое
+             "circle": True, "color": "red"}}  # ухо
+
+
+def bear(pos, size, circle, color):
+    turtle.penup()
+    turtle.goto(pos)
+    turtle.pencolor(color)
+    turtle.pendown()
+    if circle:
+        turtle.setheading(0)
+        ycor = pos[1]
+        while (size > 0):
+            turtle.circle(size)
+            size -= pensize - 1
+            ycor += pensize - 1
+            turtle.goto(pos[0], ycor)
+    else:
+        turtle.setheading(90)
+        turtle.forward(size)
+
+
+for i in range(1, 9):
+    bear(parts[i]["pos"], parts[i]["size"], parts[i]["circle"], parts[i]["color"])
+
+
+# Напишите программу, которая случайным образом рисует снежинки разного цвета и размера в соответствии с образцом.
+# Глобальные переменные ------------------------------------------------------------
+SCREEN_SIZE = 400  # Размер квадратного холста
+ACCESS_X = set(range(-SCREEN_SIZE // 2, SCREEN_SIZE // 2 + 1))  # Доступные точки
+ACCESS_Y = set(range(-SCREEN_SIZE // 2, SCREEN_SIZE // 2 + 1))  # по "x" и "y"
+
+turtle.Screen().setup(SCREEN_SIZE, SCREEN_SIZE)  # Размер холста
+turtle.Screen().bgcolor("cyan")  # Цвет холста
+turtle.pencolor("blue")  # Цвет пера
+turtle.speed(0)  # Скорость анимации черепашки
+turtle.hideturtle()  # Видимость черепашки выключена
+def star():
+    global ACCESS_X, ACCESS_Y
+
+    max_size = 0.4  # Макс. значение интервала для выбора размера снежинки
+    while (max_size >= 0.2):
+        size = random.uniform(SCREEN_SIZE * 0.02, SCREEN_SIZE * max_size)
+        x0 = random.choice(tuple(ACCESS_X))  # Выбор коор. "x" из доступных точек
+        y0 = random.choice(tuple(ACCESS_Y))  # Выбор коор. "y" из доступных точек
+        xcors = set(range(int(x0 - size / 2), int(x0 + size / 2)))  # Множества занятых
+        ycors = set(range(int(y0 - size / 2), int(y0 + size / 2)))  # точек "x" и "y"
+
+        # Если область свободна, приступаем к рисованию
+        if (len(xcors - ACCESS_X) == 0 and len(ycors - ACCESS_Y) == 0):
+            turtle.penup()
+            turtle.goto(x0, y0)  # Центр снежинки с выбранными выше координатами
+            turtle.pendown()
+
+            quarter = size / 2 / 4  # Четвертая часть луча снежинки
+            for _ in range(8):  # Цикл для рисования восьми лучей
+                for _ in range(4):  # Цикл для рисования четырех веточек на данном луче
+                    turtle.left(30)
+                    turtle.forward(quarter)
+                    turtle.backward(quarter)
+                    turtle.right(60)
+                    turtle.forward(quarter)
+                    turtle.backward(quarter)
+                    turtle.left(30)
+                    turtle.forward(quarter)
+                turtle.backward(size / 2)
+                turtle.left(45)
+
+            ACCESS_X -= xcors  # Занятые снежинкой точки
+            ACCESS_Y -= ycors  # убираем из доступных
+            print(len(ACCESS_X), len(ACCESS_Y))  # Кол-во доступных точек
+            break
+        else:  # Если область занята, то уменьшаем макс. значение
+            max_size -= 0.1  # интервала для выбора размера снежинки
+
+while (len(ACCESS_X) > SCREEN_SIZE * 0.2 and
+       len(ACCESS_Y) > SCREEN_SIZE * 0.2):
+    star()
+print("DONE!")
+
+# Напишите программу, которая рисует знак STOP по образцу.
+# from turtle import *
+speed(0)
+hideturtle()
+side = 110
+angle = 180 * (8 - 2) / 8
+x, y = 0, 0
+colors = ('black', 'white', '#EA0F0F')
+
+for i in range(3):
+    penup()
+    goto(x, y)
+    color(colors[i])
+    begin_fill()
+    pendown()
+    for _ in range(8):
+        forward(side)
+        left(180 - angle)
+    end_fill()
+    x += 2
+    y += 5
+    side -= 4
+
+penup()
+color(colors[1])
+goto(55, 70)
+write('STOP', align='center', font=('Arial Narrow', 75, 'normal'))
+
+done()
