@@ -1252,7 +1252,7 @@ while (len(ACCESS_X) > SCREEN_SIZE * 0.2 and
 print("DONE!")
 
 # Напишите программу, которая рисует знак STOP по образцу.
-# from turtle import *
+from turtle import *
 speed(0)
 hideturtle()
 side = 110
@@ -1280,3 +1280,33 @@ goto(55, 70)
 write('STOP', align='center', font=('Arial Narrow', 75, 'normal'))
 
 done()
+
+"""Напишите функцию greet(), которая принимает произвольное количество аргументов строк имен (как минимум одно) 
+и возвращает приветствие в соответствии с образцом."""
+def count_args(*args):
+    ls = [i for i in args if type(i) in (int, float)]
+    if len(ls) == 0: return 0.0
+    else: return sum(ls) / len(ls)
+print(count_args(input()))
+
+"""Функиция принимает аргументы и выводит приветствие всех"""
+def greet(name, *args):
+    s = " and ".join((name,) + args)
+    return f'Hello, {s}!'
+
+"""Напишите функцию info_kwargs(), которая принимает произвольное количество именованных аргументов 
+и печатает именованные аргументы в соответствии с образцом: <имя аргумента>: <значение аргумента>, 
+при этом имена аргументов следуют в алфавитном порядке (по возрастанию)"""
+def print_products(*args):
+    ls = [i for i in args if type(i) == str and len(i) > 1]
+    if len(ls) == 0: print('Нет продуктов')
+    else:
+        for i in range(1, len(ls) + 1):
+            print(f'{i}) {ls[i - 1]}')
+
+"""Напишите функцию info_kwargs(), которая принимает произвольное количество именованных аргументов и печатает именованные
+аргументы в соответствии с образцом: <имя аргумента>: <значение аргумента>,
+при этом имена аргументов следуют в алфавитном порядке (по возрастанию)."""
+def info_kwargs(**kwargs):
+    for key,value in sorted(kwargs.items()):
+        print(f'{key}: {value}')
