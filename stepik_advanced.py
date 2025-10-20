@@ -176,6 +176,21 @@ for i in range(n):
 # for st in maxtix:
     # print(*st)
 
+# Вывести матрицу 2
+n, m = int(input()), int(input())
+# Создаем сразу матрицу по заданным N и M
+ls = [[input() for _ in range(m)] for _ in range(n)]
+ls_copy = [[ls[i][j] for i in range(n)] for j in range(m)]
+#Выводим матрица через циклы
+for i in range(n):
+    for j in range(m):
+        print(ls[i][j], end=' ')
+    print()
+print()
+#Вывод матрицы построчно через цикл
+for i in ls_copy:
+    print(*i)
+
 #След матрицы ↘️
 n = int(input())
 ls = [input().split() for _ in range(n)]
@@ -1480,3 +1495,13 @@ numbers = [77, 293, 28, 242, 213, 285, 71, 286, 144, 276, 61, 298, 280, 214, 156
            39, 92, -63, 263, 219, 57, 18, 236, 291, 234, 10, 250, 0, 64, 172, 216, 30, 15, 229, 205, 123, -105]
 
 print(sum(map(square_number, filter(seven_number, numbers))))
+
+# from operator import *     #  импортируем все функции
+#
+# print(add(10, 20))         #  сумма
+# print(floordiv(20, 3))     #  целочисленное деление
+# print(neg(9))              #  смена знака
+# print(lt(2, 3))            #  проверка на неравенство <
+# print(lt(10, 8))           #  проверка на неравенство <
+# print(eq(5, 5))            #  проверка на равенство ==
+# print(eq(5, 9))            #  проверка на равенство ==
