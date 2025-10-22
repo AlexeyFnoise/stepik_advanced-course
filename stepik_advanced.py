@@ -1579,7 +1579,7 @@ print(*sorted(filter(lambda x: type(x) == int, mixed_list)) +
 #Противоположный цвет
 print(*list(map(lambda x: 255 - x, [int(i) for i in input().split()])))
 
-Значение многочлена 🌶️
+#Значение многочлена 🌶️
 from functools import reduce
 evalute = lambda coeff, x: reduce(lambda s, a: s * x + a, coeff)
 print(evalute(map(int, input().split()), int(input())))
