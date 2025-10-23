@@ -1584,5 +1584,47 @@ from functools import reduce
 evalute = lambda coeff, x: reduce(lambda s, a: s * x + a, coeff)
 print(evalute(map(int, input().split()), int(input())))
 
+abscissas = [float(i) for i in input().split()]
+ordinates = [float(i) for i in input().split()]
+applicates = [float(i) for i in input().split()]
+print(all(map(lambda x: x[0] ** 2 + x[1] ** 2 + x[2] ** 2 <= 4,
+              zip(abscissas, ordinates, applicates))))
+
+Корректный IP-адрес
+print(all(map(lambda x: x.isdigit() and 0 <= int(x) <= 255, input().split('.'))))
+
+Интересные числа
+a, b = int(input()), int(input())
+for i in range(a, b + 1):
+    digits = [int(q) for q in str(i)]
+    if all(map(lambda x: x != 0 and i % x == 0, digits)):
+        print(i, end=' ')
+
+Хороший пароль
+s = input()
+print('YES'if all((any(i.isdigit() for i in s),
+           any(i.islower() for i in s),
+           any(i.isupper() for i in s),
+           len(s) >= 7)) else 'NO')
+
+Отличники
+ls = []
+for i in range(int(input())):
+    ls.append(any(['5' in input() for q in range(int(input()))]))
+print('YES' if all(ls) else 'NO')
+
+def generate_letter(mail, name, date, time, place, teacher = 'Тимур Гуев', number = 17):
+    return f'''To: {mail}
+Приветствую, {name}!
+Вам назначен экзамен, который пройдет {date}, в {time}.
+По адресу: {place}.
+Экзамен будет проводить {teacher} в кабинете {number}.
+Желаем удачи на экзамене!'''
+
+def pretty_print(data, side = '-', delimiter = '|'):
+    stroka = f' {delimiter} '.join(map(str, data))
+    print('', (len(stroka) + 2) * side)
+    print(delimiter, stroka, delimiter)
+    print('', (len(stroka) + 2) * side)
 
 
