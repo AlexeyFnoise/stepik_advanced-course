@@ -1584,6 +1584,24 @@ from functools import reduce
 evalute = lambda coeff, x: reduce(lambda s, a: s * x + a, coeff)
 print(evalute(map(int, input().split()), int(input())))
 
+"""Функция ignore_command() принимает на вход один строковый аргумент command – команда, которую нужно проверить,
+и возвращает значение True, если в команде содержится подстрока из списка ignore, или False – если нет.
+"""
+def ignore_command(command):
+    ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
+    return any(filter(lambda x: x in command, ignore))
+
+# """Используя параллельную итерацию сразу по трем спискам countries, capitals и population,
+# выведите информацию о стране в формате:"""
+countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
+capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
+population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
+
+for x, y, z in zip(countries, capitals, population):
+    print(f'{y} is the capital of {x}, population equal {z} people.')
+
+
+
 abscissas = [float(i) for i in input().split()]
 ordinates = [float(i) for i in input().split()]
 applicates = [float(i) for i in input().split()]
