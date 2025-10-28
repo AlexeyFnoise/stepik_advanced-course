@@ -644,7 +644,11 @@ for i in text:
 print(result)
 
 #Наиболее встречающеся слово
-s = 'orange strawberry barley gooseberry apple apricot barley currant orange melon pomegranate banana banana orange barley apricot plum grapefruit banana quince strawberry barley grapefruit banana grapes melon strawberry apricot currant currant gooseberry raspberry apricot currant orange lime quince grapefruit barley banana melon pomegranate barley banana orange barley apricot plum banana quince lime grapefruit strawberry gooseberry apple barley apricot currant orange melon pomegranate banana banana orange apricot barley plum banana grapefruit banana quince currant orange melon pomegranate barley plum banana quince barley lime grapefruit pomegranate barley'
+s = ('orange strawberry barley gooseberry apple apricot barley currant orange melon pomegranate banana banana orange barley apricot plum '
+     'grapefruit banana quince strawberry barley grapefruit banana grapes melon strawberry apricot currant currant gooseberry raspberry '
+     'apricot currant orange lime quince grapefruit barley banana melon pomegranate barley banana orange barley apricot plum banana quince '
+     'lime grapefruit strawberry gooseberry apple barley apricot currant orange melon pomegranate banana banana orange apricot barley plum '
+     'banana grapefruit banana quince currant orange melon pomegranate barley plum banana quince barley lime grapefruit pomegranate barley')
 ls = s.split()
 mydict = {}
 v_max = 0
@@ -832,7 +836,9 @@ result = [{i: {k: q}}for i, k, q in zip(student_ids, student_names, student_grad
 print(result)
 
 #Итоговая работа на словари 1
-my_dict = {'C1': [10, 20, 30, 7, 6, 23, 90], 'C2': [20, 30, 40, 1, 2, 3, 90, 12], 'C3': [12, 34, 20, 21], 'C4': [22, 54, 209, 21, 7], 'C5': [2, 4, 29, 21, 19], 'C6': [4, 6, 7, 10, 55], 'C7': [4, 8, 12, 23, 42], 'C8': [3, 14, 15, 26, 48], 'C9': [2, 7, 18, 28, 18, 28]}
+my_dict = {'C1': [10, 20, 30, 7, 6, 23, 90], 'C2': [20, 30, 40, 1, 2, 3, 90, 12], 'C3': [12, 34, 20, 21], 'C4': [22, 54, 209, 21, 7],
+           'C5': [2, 4, 29, 21, 19], 'C6': [4, 6, 7, 10, 55],
+           'C7': [4, 8, 12, 23, 42], 'C8': [3, 14, 15, 26, 48], 'C9': [2, 7, 18, 28, 18, 28]}
 my_dict = {i: [i for i in my_dict[k] if i <= 20]for k in my_dict}
 
 #Итоговая работа на словари 2
