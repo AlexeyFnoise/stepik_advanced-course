@@ -1590,24 +1590,24 @@ applicates = [float(i) for i in input().split()]
 print(all(map(lambda x: x[0] ** 2 + x[1] ** 2 + x[2] ** 2 <= 4,
               zip(abscissas, ordinates, applicates))))
 
-Корректный IP-адрес
+# Корректный IP-адрес
 print(all(map(lambda x: x.isdigit() and 0 <= int(x) <= 255, input().split('.'))))
 
-Интересные числа
+# Интересные числа
 a, b = int(input()), int(input())
 for i in range(a, b + 1):
     digits = [int(q) for q in str(i)]
     if all(map(lambda x: x != 0 and i % x == 0, digits)):
         print(i, end=' ')
-
-Хороший пароль
+#
+# Хороший пароль
 s = input()
 print('YES'if all((any(i.isdigit() for i in s),
            any(i.islower() for i in s),
            any(i.isupper() for i in s),
            len(s) >= 7)) else 'NO')
 
-Отличники
+# Отличники
 ls = []
 for i in range(int(input())):
     ls.append(any(['5' in input() for q in range(int(input()))]))
@@ -1627,4 +1627,20 @@ def pretty_print(data, side = '-', delimiter = '|'):
     print(delimiter, stroka, delimiter)
     print('', (len(stroka) + 2) * side)
 
+# 17.4 Работа с текстовыми файлами. Часть 3
+import random
+with open('random.txt', 'w', encoding='utf-8') as file:
+    arr = [str(random.randint(111, 777)) + '\n' for _ in range(25)]
+    file.writelines(arr)
 
+with open('input.txt', encoding='utf-8') as file:
+    arr = [str(i) + ') ' + line for i, line in enumerate(file, 1)]
+with open('output.txt', 'w', encoding='utf-8') as file:
+    file.writelines(arr)
+
+with open('class_scores.txt', encoding='utf-8') as file, open('new_scores.txt', 'w', encoding='utf-8') as new_file:
+    for line in file:
+        name, ball = line.split()
+        ball = int(ball) + 5
+        if ball > 100: ball = 100
+        print(name, ball, file=new_file)
