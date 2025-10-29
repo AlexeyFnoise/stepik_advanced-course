@@ -1652,6 +1652,58 @@ def pretty_print(data, side = '-', delimiter = '|'):
     print('', (len(stroka) + 2) * side)
 
 # 17.4 Работа с текстовыми файлами. Часть 3
+with open('text.txt', encoding='utf-8') as file:
+    print(file.read()[::-1])
+
+with open('data.txt', encoding='utf-8') as file:
+    for line in file.readlines()[::-1]:
+        print(line.strip())
+
+with open('line.txt', encoding='utf-8') as file:
+    text = file.readlines()
+    len_max = max(map(len, text))
+    print(*filter(lambda x: len(x) == len_max, text), sep='')
+
+with open('numbers.txt', encoding='utf-8') as file:
+    for line in file:
+        print(sum([int(i) for i in line.split()]))
+
+with open('nums.txt', encoding='utf-8') as file:
+    s = 0
+    k = '0'
+    for i in file.read():
+        if i.isdigit(): k += i
+        else:
+            s += int(k)
+            k = '0'
+    print(s)
+
+with open('file.txt', encoding='utf-8') as file:
+    text = file.read()
+    len_count = len(list(filter(lambda x: x.isalpha(), text)))
+    word_count = len(text.split())
+    line_count = len(text.splitlines())
+
+print(f'Input file contains:\n{len_count} letters\n{word_count} words\n{line_count} lines')
+
+import random
+with open('first_names.txt', encoding='utf-8') as first, open('last_names.txt', encoding='utf-8') as last:
+    last_name = last.readlines()
+    firs_name = first.readlines()
+for i in range(3):
+    print(f'{random.choice(firs_name).strip()} {random.choice(last_name).strip()}')
+
+with open('population.txt', encoding='utf-8') as country:
+    res_ls = [i.split('\t') for i in country]
+for i in res_ls:
+    if i[0].startswith('G') and int(i[1]) > 500000: print(i[0])
+
+def read_csv():
+    with open('data.csv', encoding='utf-8') as file:
+        key = [line.strip() for line in file.readline().split(',')]
+        value = [line.strip().split(',') for line in file.readlines()]
+    return [dict(zip(key, i)) for i in value]
+
 import random
 with open('random.txt', 'w', encoding='utf-8') as file:
     arr = [str(random.randint(111, 777)) + '\n' for _ in range(25)]
