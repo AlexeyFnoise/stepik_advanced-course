@@ -1720,3 +1720,51 @@ with open('class_scores.txt', encoding='utf-8') as file, open('new_scores.txt', 
         ball = int(ball) + 5
         if ball > 100: ball = 100
         print(name, ball, file=new_file)
+
+#         Итоговая работа на файлы
+with open('grades.txt', encoding='utf-8') as file:
+    counter = 0
+    for line in file.readlines():
+        counter += all(map(lambda x: int(x) >= 65, line.split()[1:]))
+    print(counter)
+
+with open('words.txt', encoding='utf-8') as words:
+    s = words.read().split()
+    print(*[i for i in s if len(i) == len(max(s, key=len))], sep='\n')
+
+with open(input(), encoding='utf-8') as file:
+    print(*file.readlines()[-10:], sep='')
+
+with open(input(), encoding='utf-8') as word_file, open('forbidden_words.txt', encoding='utf-8') as forbidden_file:
+    forbidden_words = forbidden_file.read().split()
+    for s in word_file:
+        for x in forbidden_words:
+            while x in s.lower():
+                index = s.lower().index(x)
+                s = s[:index] + '*' * len(x) + s[index + len(x):]
+        print(s.strip())
+
+d = {
+    'а': 'a', 'к': 'k', 'х': 'h', 'б': 'b', 'л': 'l', 'ц': 'c', 'в': 'v', 'м': 'm', 'ч': 'ch',
+    'г': 'g', 'н': 'n', 'ш': 'sh', 'д': 'd', 'о': 'o', 'щ': 'shh', 'е': 'e', 'п': 'p', 'ъ': '*',
+    'ё': 'jo', 'р': 'r', 'ы': 'y', 'ж': 'zh', 'с': 's', 'ь': "'", 'з': 'z', 'т': 't', 'э': 'je',
+    'и': 'i', 'у': 'u', 'ю': 'ju', 'й': 'j', 'ф': 'f', 'я': 'ya'
+    }
+with open('cyrillic.txt') as file1, open('transliteration.txt', 'w') as file2:
+    for i in file1.read():
+        if i in d: file2.write(d[i])
+        elif i.lower() in d: file2.write(d[i.lower()].capitalize())
+        else:
+            file2.write(i)
+
+Пропущенные комменты
+with open(input(), encoding='utf-8') as file:
+    res = []
+    last_l = ''
+    for line in file:
+        if line.startswith('def ') and not last_l.startswith('#'): res.append(line[4:line.find('(')])
+        last_l = line
+if len(res):
+    print(*res, sep='\n')
+else:
+    print('Best Programming Team')
